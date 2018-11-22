@@ -1,0 +1,10 @@
+<resources>
+  <string name="app_name">GitHubApi</string>
+    <string name="repositories">Repositories:</string>
+  <string name="followers">Followers:</string>
+  <string name="user_name">username</string>
+    <string name="description">Description</string>
+  <string name="forks">Forks</string>
+  <string name="license">License:</string>
+    <string name="not_found">not found</string>
+</resources>
