@@ -1,9 +1,9 @@
-package com.test.githubit.http.apimodel;
+package com.test.githubit.http.apimodel.Repo;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Fork {
+public class Repo {
 
   @SerializedName("id")
   @Expose
@@ -28,7 +28,7 @@ public class Fork {
   private String htmlUrl;
   @SerializedName("description")
   @Expose
-  private Object description;
+  private String description;
   @SerializedName("fork")
   @Expose
   private Boolean fork;
@@ -166,7 +166,7 @@ public class Fork {
   private String svnUrl;
   @SerializedName("homepage")
   @Expose
-  private Object homepage;
+  private String homepage;
   @SerializedName("size")
   @Expose
   private Integer size;
@@ -208,7 +208,7 @@ public class Fork {
   private Integer openIssuesCount;
   @SerializedName("license")
   @Expose
-  private Object license;
+  private License license;
   @SerializedName("forks")
   @Expose
   private Integer forks;
@@ -278,11 +278,11 @@ public class Fork {
     this.htmlUrl = htmlUrl;
   }
 
-  public Object getDescription() {
+  public String getDescription() {
     return description;
   }
 
-  public void setDescription(Object description) {
+  public void setDescription(String description) {
     this.description = description;
   }
 
@@ -646,11 +646,11 @@ public class Fork {
     this.svnUrl = svnUrl;
   }
 
-  public Object getHomepage() {
+  public String getHomepage() {
     return homepage;
   }
 
-  public void setHomepage(Object homepage) {
+  public void setHomepage(String homepage) {
     this.homepage = homepage;
   }
 
@@ -758,11 +758,11 @@ public class Fork {
     this.openIssuesCount = openIssuesCount;
   }
 
-  public Object getLicense() {
+  public License getLicense() {
     return license;
   }
 
-  public void setLicense(Object license) {
+  public void setLicense(License license) {
     this.license = license;
   }
 
@@ -797,5 +797,7 @@ public class Fork {
   public void setDefaultBranch(String defaultBranch) {
     this.defaultBranch = defaultBranch;
   }
+
+
 
 }

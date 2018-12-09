@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.test.githubit">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -19,8 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.test.githubit.Repo.ReposActivity"></activity>
-        <activity android:name="com.test.githubit.Forks.ForksActivity"></activity>
+        <activity android:name="com.test.githubit.Repo.ReposActivity" />
+        <activity android:name="com.test.githubit.Forks.ForksActivity"/>
     </application>
 
 </manifest>

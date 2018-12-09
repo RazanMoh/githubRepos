@@ -1,4 +1,6 @@
-package com.test.githubit.http.apimodel;
+package com.test.githubit.http.apimodel.Fork;
+
+import com.test.githubit.http.apimodel.Fork.Fork;
 
 import java.util.List;
 

@@ -1,9 +1,12 @@
-package com.test.githubit.http.apimodel;
+package com.test.githubit.http.apimodel.Repo;
+
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class License {
+public class License implements Parcelable {
 
   @SerializedName("key")
   @Expose
@@ -20,6 +23,26 @@ public class License {
   @SerializedName("node_id")
   @Expose
   private String nodeId;
+
+  protected License(Parcel in) {
+    key = in.readString();
+    name = in.readString();
+    spdxId = in.readString();
+    url = in.readString();
+    nodeId = in.readString();
+  }
+
+  public static final Creator<License> CREATOR = new Creator<License>() {
+    @Override
+    public License createFromParcel(Parcel in) {
+      return new License(in);
+    }
+
+    @Override
+    public License[] newArray(int size) {
+      return new License[size];
+    }
+  };
 
   public String getKey() {
     return key;
@@ -61,4 +84,17 @@ public class License {
     this.nodeId = nodeId;
   }
 
+  @Override
+  public int describeContents() {
+    return 0;
+  }
+
+  @Override
+  public void writeToParcel(Parcel parcel, int i) {
+    parcel.writeString(key);
+    parcel.writeString(name);
+    parcel.writeString(spdxId);
+    parcel.writeString(url);
+    parcel.writeString(nodeId);
+  }
 }

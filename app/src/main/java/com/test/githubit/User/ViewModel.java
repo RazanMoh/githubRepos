@@ -1,7 +1,9 @@
 package com.test.githubit.User;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class ViewModel {
+public class ViewModel implements Parcelable {
 
     private String name;
     private String avatar;
@@ -9,11 +11,31 @@ public class ViewModel {
     private int followers;
 
     public ViewModel(String name, int publicRepos, String avatar, int followers) {
-        this.avatar = avatar;
         this.name = name;
+        this.avatar = avatar;
         this.publicRepos=publicRepos;
         this.followers=followers;
     }
+
+    protected ViewModel(Parcel in) {
+        name = in.readString();
+        avatar = in.readString();
+        publicRepos = in.readInt();
+        followers = in.readInt();
+    }
+
+
+    public static final Creator<ViewModel> CREATOR = new Creator<ViewModel>() {
+        @Override
+        public ViewModel createFromParcel(Parcel in) {
+            return new ViewModel(in);
+        }
+
+        @Override
+        public ViewModel[] newArray(int size) {
+            return new ViewModel[size];
+        }
+    };
 
     public String getAvatar() {
         return avatar;
@@ -47,5 +69,18 @@ public class ViewModel {
         this.followers = followers;
     }
 
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(name);
+        parcel.writeString(avatar);
+        parcel.writeInt(publicRepos);
+        parcel.writeInt(followers);
+    }
 
 }

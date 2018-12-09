@@ -1,4 +1,6 @@
-package com.test.githubit.http.apimodel;
+package com.test.githubit.http.apimodel.Repo;
+
+import com.test.githubit.http.apimodel.Repo.Repo;
 
 import java.util.List;
 

@@ -13,12 +13,12 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListItemViewHolder> {
+public class ArrayListAdapter extends RecyclerView.Adapter<ArrayListAdapter.ListItemViewHolder> {
 
     private List<ViewModel> list;
     private Context mContext;
 
-    public ListAdapter(Context mContext, List<ViewModel> list) {
+    public ArrayListAdapter(Context mContext, List<ViewModel> list) {
         this.list = list;
         this.mContext = mContext;
     }

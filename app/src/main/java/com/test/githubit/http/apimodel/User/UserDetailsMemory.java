@@ -1,4 +1,6 @@
-package com.test.githubit.http.apimodel;
+package com.test.githubit.http.apimodel.User;
+
+import com.test.githubit.http.apimodel.User.UserDetails;
 
 import java.util.List;
 

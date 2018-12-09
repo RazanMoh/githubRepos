@@ -3,6 +3,7 @@ package com.test.githubit.User;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,17 +13,17 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.test.githubit.R;
 import com.test.githubit.Repo.ReposActivity;
-import java.util.List;
+import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListItemViewHolder> {
+public class ArrayListAdapter extends RecyclerView.Adapter<ArrayListAdapter.ListItemViewHolder> {
 
-    private List<ViewModel> list;
+    private ArrayList<ViewModel> list;
     private Context mContext;
 
-    public ListAdapter(Context mContext, List<ViewModel> list) {
+    public ArrayListAdapter(Context mContext, ArrayList<ViewModel> list) {
         this.list = list;
         this.mContext = mContext;
     }
@@ -35,9 +36,10 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListItemViewHo
     }
 
     @Override
-    public void onBindViewHolder(ListItemViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ListItemViewHolder holder, int position) {
 
         holder.userName.setText(list.get(position).getName());
+
         holder.noOfRepos.setText(list.get(position).getPublicRepos()+"");
         holder.noOfFollowers.setText(list.get(position).getFollowers()+"");
         holder.repos.setText(mContext.getResources().getString( R.string.repositories));
@@ -49,6 +51,10 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListItemViewHo
     public int getItemCount() {
 
         return list.size();
+    }
+
+    public ArrayList<ViewModel> getList() {
+        return list;
     }
 
     public static class ListItemViewHolder extends RecyclerView.ViewHolder {

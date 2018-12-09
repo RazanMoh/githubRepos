@@ -1,4 +1,4 @@
-package com.test.githubit.http.apimodel;
+package com.test.githubit.http.apimodel.User;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

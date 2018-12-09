@@ -7,4 +7,5 @@
   <string name="forks">Forks</string>
   <string name="license">License:</string>
     <string name="not_found">not found</string>
+    <string name="user_avatar">user\'s avatar</string>
 </resources>

@@ -1,9 +1,10 @@
-package com.test.githubit.http.apimodel;
+package com.test.githubit.http.apimodel.Fork;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.test.githubit.http.apimodel.Repo.Owner;
 
-public class Repo {
+public class Fork {
 
   @SerializedName("id")
   @Expose
@@ -28,7 +29,7 @@ public class Repo {
   private String htmlUrl;
   @SerializedName("description")
   @Expose
-  private String description;
+  private Object description;
   @SerializedName("fork")
   @Expose
   private Boolean fork;
@@ -166,7 +167,7 @@ public class Repo {
   private String svnUrl;
   @SerializedName("homepage")
   @Expose
-  private String homepage;
+  private Object homepage;
   @SerializedName("size")
   @Expose
   private Integer size;
@@ -208,7 +209,7 @@ public class Repo {
   private Integer openIssuesCount;
   @SerializedName("license")
   @Expose
-  private License license;
+  private Object license;
   @SerializedName("forks")
   @Expose
   private Integer forks;
@@ -278,11 +279,11 @@ public class Repo {
     this.htmlUrl = htmlUrl;
   }
 
-  public String getDescription() {
+  public Object getDescription() {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(Object description) {
     this.description = description;
   }
 
@@ -646,11 +647,11 @@ public class Repo {
     this.svnUrl = svnUrl;
   }
 
-  public String getHomepage() {
+  public Object getHomepage() {
     return homepage;
   }
 
-  public void setHomepage(String homepage) {
+  public void setHomepage(Object homepage) {
     this.homepage = homepage;
   }
 
@@ -758,11 +759,11 @@ public class Repo {
     this.openIssuesCount = openIssuesCount;
   }
 
-  public License getLicense() {
+  public Object getLicense() {
     return license;
   }
 
-  public void setLicense(License license) {
+  public void setLicense(Object license) {
     this.license = license;
   }
 

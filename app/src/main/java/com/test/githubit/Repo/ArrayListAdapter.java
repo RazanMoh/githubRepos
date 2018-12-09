@@ -10,19 +10,18 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.test.githubit.Forks.ForksActivity;
 import com.test.githubit.R;
-import com.test.githubit.http.apimodel.Repo;
 import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListItemViewHolder> {
+public class ArrayListAdapter extends RecyclerView.Adapter<ArrayListAdapter.ListItemViewHolder> {
 
-    private List<Repo> list;
+    private List<ViewModel> list;
     private Context mContext;
     private String username;
 
-    public ListAdapter(Context mContext, List<Repo> reposList, String username) {
+    public ArrayListAdapter(Context mContext, List<ViewModel> reposList, String username) {
         this.list = reposList;
         this.mContext = mContext;
         this.username = username;
@@ -44,13 +43,13 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListItemViewHo
         else{
             holder.repoDescription.setText(mContext.getResources().getString( R.string.not_found));
         }
-        if(list.get(position).getLicense()==null)
+        if(list.get(position).getLicenseName()==null)
             holder.licenseName.setText(mContext.getResources().getString( R.string.not_found));
         else{
-            holder.licenseName.setText(list.get(position).getLicense().getName());
+            holder.licenseName.setText(list.get(position).getLicenseName());
         }
 
-        holder.noOfFork.setText(String.valueOf(list.get(position).getForks()));
+        holder.noOfFork.setText(String.valueOf(list.get(position).getForkCount()));
         holder.fork.setText(mContext.getResources().getString( R.string.forks));
         holder.license.setText(mContext.getResources().getString( R.string.license));
     }
