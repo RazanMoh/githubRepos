@@ -21,6 +21,5 @@ public interface BaseActivityMVP<T> {
     }
 
     interface Model<T> {
-
     }
 }

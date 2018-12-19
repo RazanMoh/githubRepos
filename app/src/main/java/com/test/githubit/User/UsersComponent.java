@@ -6,5 +6,5 @@ import dagger.Component;
 @UsersScope
 @Component(modules = {UsersModule.class,ApiModuleForName.class})
 public interface UsersComponent {
-    void inject(UsersActivity target);
+  void inject(UsersActivity target);
 }

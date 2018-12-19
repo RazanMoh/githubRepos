@@ -87,7 +87,7 @@ public class ForksModel implements ForksActivityMVP.Model {
     return getUsersFromNetwork(repoName, username).concatMap(new Function<Fork, Observable<UserDetails>>() {
       @Override
       public Observable<UserDetails> apply(Fork result) {
-        return userApiService.getUserDetails(result.getOwner().getLogin());
+        return userApiService.getUserDetailsObs(result.getOwner().getLogin());
       }
     }).concatMap(new Function<UserDetails, Observable<UserDetails>>() {
       @Override

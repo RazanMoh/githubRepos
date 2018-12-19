@@ -13,20 +13,28 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.test.githubit.R;
 import com.test.githubit.Repo.ReposActivity;
-import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ArrayListAdapter extends RecyclerView.Adapter<ArrayListAdapter.ListItemViewHolder> {
+public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListItemViewHolder> {
 
-    private ArrayList<ViewModel> list;
+    private List<ViewModelU> list;
     private Context mContext;
 
-    public ArrayListAdapter(Context mContext, ArrayList<ViewModel> list) {
+    public ListAdapter(Context mContext, List<ViewModelU> list) {
         this.list = list;
         this.mContext = mContext;
     }
+
+
+    public void updateDataSet(List<ViewModelU> list){
+        this.list = list;
+        notifyDataSetChanged();
+    }
+
 
     @Override
     public ListItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -53,7 +61,7 @@ public class ArrayListAdapter extends RecyclerView.Adapter<ArrayListAdapter.List
         return list.size();
     }
 
-    public ArrayList<ViewModel> getList() {
+    public List<ViewModelU> getList() {
         return list;
     }
 

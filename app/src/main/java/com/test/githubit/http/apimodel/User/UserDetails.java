@@ -99,6 +99,13 @@ public class UserDetails {
     @Expose
     private String updatedAt;
 
+    public UserDetails(String login, String avatarUrl, Integer publicRepos, Integer followers) {
+        this.login = login;
+        this.avatarUrl = avatarUrl;
+        this.publicRepos = publicRepos;
+        this.followers = followers;
+    }
+
     public String getLogin() {
         return login;
     }

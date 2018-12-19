@@ -44,17 +44,9 @@ public class ReposActivity extends BaseActivity<ViewModel> implements ReposActiv
     Intent intent = getIntent();
     Bundle bundle = intent.getExtras();
 
-    //((App) getApplication()).getReposComponent().inject(this);
     initInjector();
-
     ButterKnife.bind(this);
-
-    //progressDialog = new ProgressDialog(this);
-
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-    //presenter.setView(this);
-
     initViews();
 
     if (savedInstanceState == null) {
@@ -109,7 +101,5 @@ public class ReposActivity extends BaseActivity<ViewModel> implements ReposActiv
   protected void initViews() {
     presenter.setView(this);
   }
-
-
 
 }
