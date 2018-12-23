@@ -2,7 +2,6 @@ package com.test.githubit.Base;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -10,11 +9,12 @@ import android.view.ViewGroup;
 import com.test.githubit.R;
 import com.test.githubit.http.UserApiService;
 import java.util.ArrayList;
+import java.util.List;
 import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public abstract class BaseActivity<T> extends AppCompatActivity implements BaseActivityMVP.View<T> {
+public abstract class BaseActivity<T> extends AppCompatActivity {
 
     private final String TAG = BaseActivity.class.getName();
 
@@ -29,8 +29,7 @@ public abstract class BaseActivity<T> extends AppCompatActivity implements BaseA
     @Inject
     UserApiService userApiService;
 
-    private static final String STATE_LIST = "State Adapter Data";
-    private ArrayList<T> tArrayList = new ArrayList<>();
+    private List<T> tArrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,31 +38,16 @@ public abstract class BaseActivity<T> extends AppCompatActivity implements BaseA
 
         ButterKnife.bind(this);
 
-        initInjector();
-
-        initViews();
-
         initProgressDialog();
     }
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putParcelableArrayList(STATE_LIST, (ArrayList<? extends Parcelable>) tArrayList);
-    }
+    protected abstract void subscribeUsersObserver();
+    protected abstract void initRecyclerView();
 
-    @Override
-    public void showSnackbar(String msg) {
-        Snackbar.make(rootView, msg, Snackbar.LENGTH_SHORT).show();
-
-    }
-
-    @Override
     public void initProgressDialog() {
         progressDialog = new ProgressDialog(this);
     }
 
-    @Override
     public void showProgressDialog() {
 
         if (progressDialog != null && progressDialog.isShowing()) {
@@ -81,7 +65,7 @@ public abstract class BaseActivity<T> extends AppCompatActivity implements BaseA
         }
     }
 
-    @Override
+
     public void hideProgressDialog() {
         try {
 
@@ -93,11 +77,5 @@ public abstract class BaseActivity<T> extends AppCompatActivity implements BaseA
             e.printStackTrace();
         }
     }
-
-    protected abstract void initInjector();
-
-    protected abstract void initViews();
-
-    protected abstract void updateData(T t);
 
 }

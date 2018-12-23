@@ -3,14 +3,13 @@ package com.test.githubit.User;
 import android.app.ProgressDialog;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
+import com.test.githubit.Base.BaseActivity;
 import com.test.githubit.R;
 import com.test.githubit.http.UserApiService;
-import com.test.githubit.root.App;
 import android.arch.lifecycle.Observer;
 import javax.inject.Inject;
 import butterknife.BindView;
@@ -20,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class UsersActivity extends AppCompatActivity {
+public class UsersActivity extends BaseActivity<ViewModelU> {
 
     private final String TAG = UsersActivity.class.getName();
 
@@ -58,11 +57,8 @@ public class UsersActivity extends AppCompatActivity {
         subscribeUsersObserver();
     }
 
-    public void initProgressDialog() {
-        progressDialog = new ProgressDialog(this);
-    }
-
-    private void initRecyclerView() {
+    @Override
+    protected void initRecyclerView() {
         listAdapter = new ListAdapter(getApplicationContext(),usersList);
         recyclerView.setAdapter(listAdapter);
         recyclerView.addItemDecoration(new DividerItemDecoration(this));
@@ -76,12 +72,12 @@ public class UsersActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    private void subscribeUsersObserver() {
+    @Override
+    protected void subscribeUsersObserver() {
 
         usersViewModel.getUsers().observe(this, new Observer<List<ViewModelU>>() {
             @Override
             public void onChanged(@Nullable List<ViewModelU> viewModelList) {
-                //update ui
                 listAdapter.updateDataSet(viewModelList);
                 hideProgressDialog();
 
@@ -90,32 +86,4 @@ public class UsersActivity extends AppCompatActivity {
 
     }
 
-    public void showProgressDialog() {
-
-        if (progressDialog != null && progressDialog.isShowing()) {
-            progressDialog.setMessage("Loading...");
-        } else {
-            progressDialog.setIndeterminate(true);
-            progressDialog.setMessage("Loading...");
-            progressDialog.setCancelable(false);
-
-            try {
-                progressDialog.show();
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-        }
-    }
-
-    public void hideProgressDialog() {
-        try {
-
-            if (progressDialog != null && progressDialog.isShowing()) {
-                progressDialog.dismiss();
-                progressDialog.hide();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 }

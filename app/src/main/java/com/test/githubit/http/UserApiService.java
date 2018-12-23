@@ -21,12 +21,10 @@ public interface UserApiService {
     Call<UserDetails> getUserDetails(@Path("user") String user);
 
     @GET("users/{user}/repos")
-    Observable<List<Repo>> getRepos(@Path("user") String user);
+    Call<List<Repo>>  getRepos(@Path("user") String user);
 
     @GET("repos/{user}/{repo}/forks")
-    Observable<List<Fork>> getUser(@Path("user") String user,
+    Call<List<Fork>> getForkUsers(@Path("user") String user,
                                    @Path("repo") String repo);
-    @GET("users/{user}")
-    Observable<UserDetails> getUserDetailsObs(@Path("user") String user);
 
 }

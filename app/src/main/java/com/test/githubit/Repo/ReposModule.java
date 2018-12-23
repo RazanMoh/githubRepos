@@ -14,13 +14,7 @@ public class ReposModule {
     }
     @ReposScope
     @Provides
-    public ReposActivityMVP.Presenter provideReposActivityPresenter(ReposActivityMVP.Model reposModel) {
-        return new ReposPresenter(reposModel);
-    }
-
-    @ReposScope
-    @Provides
-    public ReposActivityMVP.Model provideReposActivityModel(UserApiService userApiService) {
-        return new ReposModel(userApiService);
+    public ReposRepository provideUsersActivityModel() {
+        return new ReposRepository();
     }
 }

@@ -10,27 +10,33 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.test.githubit.Forks.ForksActivity;
 import com.test.githubit.R;
+import com.test.githubit.http.apimodel.Repo.Repo;
 import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ArrayListAdapter extends RecyclerView.Adapter<ArrayListAdapter.ListItemViewHolder> {
+public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListItemViewHolder> {
 
-    private List<ViewModel> list;
+    private List<Repo> list;
     private Context mContext;
     private String username;
 
-    public ArrayListAdapter(Context mContext, List<ViewModel> reposList, String username) {
+    public ListAdapter(Context mContext, List<Repo> reposList, String username) {
         this.list = reposList;
         this.mContext = mContext;
         this.username = username;
     }
 
+    public void updateDataSet(List<Repo> list){
+        this.list = list;
+        notifyDataSetChanged();
+    }
+
     @Override
     public ListItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView =
-                LayoutInflater.from(parent.getContext()).inflate(R.layout.repo_list_row, parent, false);
+            LayoutInflater.from(parent.getContext()).inflate(R.layout.repo_list_row, parent, false);
         return new ListItemViewHolder(itemView,username);
     }
 
@@ -39,17 +45,17 @@ public class ArrayListAdapter extends RecyclerView.Adapter<ArrayListAdapter.List
 
         holder.repoName.setText(list.get(position).getName());
         if(list.get(position).getDescription()!=null)
-        holder.repoDescription.setText(list.get(position).getDescription());
+            holder.repoDescription.setText(list.get(position).getDescription());
         else{
             holder.repoDescription.setText(mContext.getResources().getString( R.string.not_found));
         }
-        if(list.get(position).getLicenseName()==null)
+        if(list.get(position).getLicense()==null)
             holder.licenseName.setText(mContext.getResources().getString( R.string.not_found));
         else{
-            holder.licenseName.setText(list.get(position).getLicenseName());
+            holder.licenseName.setText(list.get(position).getLicense().getName());
         }
 
-        holder.noOfFork.setText(String.valueOf(list.get(position).getForkCount()));
+        holder.noOfFork.setText(String.valueOf(list.get(position).getForks()));
         holder.fork.setText(mContext.getResources().getString( R.string.forks));
         holder.license.setText(mContext.getResources().getString( R.string.license));
     }
@@ -88,4 +94,3 @@ public class ArrayListAdapter extends RecyclerView.Adapter<ArrayListAdapter.List
         }
     }
 }
-

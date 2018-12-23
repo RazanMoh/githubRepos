@@ -3,36 +3,36 @@ package com.test.githubit.Forks;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class ViewModel implements Parcelable {
+public class ViewModelF implements Parcelable {
 
     private String name;
     private String avatar;
     private int publicRepos;
     private int followers;
 
-    public ViewModel(String name, int publicRepos, String avatar, int followers) {
+    public ViewModelF(String name, int publicRepos, String avatar, int followers) {
         this.avatar = avatar;
         this.name = name;
         this.publicRepos=publicRepos;
         this.followers=followers;
     }
 
-    protected ViewModel(Parcel in) {
+    protected ViewModelF(Parcel in) {
         name = in.readString();
         avatar = in.readString();
         publicRepos = in.readInt();
         followers = in.readInt();
     }
 
-    public static final Creator<ViewModel> CREATOR = new Creator<ViewModel>() {
+    public static final Creator<ViewModelF> CREATOR = new Creator<ViewModelF>() {
         @Override
-        public ViewModel createFromParcel(Parcel in) {
-            return new ViewModel(in);
+        public ViewModelF createFromParcel(Parcel in) {
+            return new ViewModelF(in);
         }
 
         @Override
-        public ViewModel[] newArray(int size) {
-            return new ViewModel[size];
+        public ViewModelF[] newArray(int size) {
+            return new ViewModelF[size];
         }
     };
 

@@ -9,25 +9,32 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.test.githubit.R;
+import com.test.githubit.http.apimodel.Repo.Repo;
+
 import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ArrayListAdapter extends RecyclerView.Adapter<ArrayListAdapter.ListItemViewHolder> {
+public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListItemViewHolder> {
 
-    private List<ViewModel> list;
+    private List<ViewModelF> list;
     private Context mContext;
 
-    public ArrayListAdapter(Context mContext, List<ViewModel> list) {
+    public ListAdapter(Context mContext, List<ViewModelF> list) {
         this.list = list;
         this.mContext = mContext;
+    }
+
+    public void updateDataSet(List<ViewModelF> list){
+        this.list = list;
+        notifyDataSetChanged();
     }
 
 
     @Override
     public ListItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView =
-                LayoutInflater.from(parent.getContext()).inflate(R.layout.user_list_row, parent, false);
+            LayoutInflater.from(parent.getContext()).inflate(R.layout.user_list_row, parent, false);
         return new ListItemViewHolder(itemView);
     }
 
@@ -64,4 +71,3 @@ public class ArrayListAdapter extends RecyclerView.Adapter<ArrayListAdapter.List
         }
     }
 }
-
